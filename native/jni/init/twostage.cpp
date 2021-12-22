@@ -59,6 +59,7 @@ extern uint32_t patch_verity(void *buf, uint32_t size);
 
 void FirstStageInit::prepare() {
     if (config->dsu) {
+        rename(backup_init(), "/init");
         LOGI("Skip loading Magisk because of DSU");
         return;
     }
