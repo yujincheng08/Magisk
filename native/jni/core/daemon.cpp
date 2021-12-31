@@ -397,10 +397,7 @@ int connect_daemon(bool create) {
             return -1;
         }
 
-        if (fork_dont_care() == 0) {
-            close(fd);
-            daemon_entry();
-        }
+        daemon_entry();
 
         while (connect(fd, (struct sockaddr*) &sun, len))
             usleep(10000);
